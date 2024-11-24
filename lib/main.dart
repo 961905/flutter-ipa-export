@@ -82,7 +82,7 @@ class HomeView extends StatelessWidget {
             );
           },
         ),
-
+],
               case 1:
                 return ListTile(
                   leading: Icon(Icons.speed),
