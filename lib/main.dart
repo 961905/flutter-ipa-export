@@ -19,39 +19,49 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Flutter iOS .ipa Export'),
-          bottom: TabBar(
-            isScrollable: true,
-            tabs: [
-              Tab(
-                icon: Icon(Icons.home),
-                text: '主页',
-              ),
-              Tab(
-                icon: Icon(Icons.book),
-                text: '教程',
-              ),
-              Tab(
-                icon: Icon(Icons.settings),
-                text: '设置',
-              ),
-            ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Flutter iOS .ipa Export'),
+      ),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: <Widget>[
+          HomeView(),
+          LibraryView(),
+          SettingsView(),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '主页',
           ),
-        ),
-        body: TabBarView(
-          children: [
-            HomeView(),
-            LibraryView(),
-            SettingsView(),
-          ],
-        ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: '教程',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: '设置',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: (int index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
       ),
     );
   }
@@ -60,25 +70,19 @@ class MyHomePage extends StatelessWidget {
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('哒哒工具箱'),
-      ),
-      body: ListView(
-        children: [
-          ...List.generate(12, (index) {
-            switch (index) {
-              case 0:
-                return ListTile(
-                  leading: Icon(Icons.image),
-                  title: Text("画质"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => QualityView()),
-                    );
-                  },
-                );
+    return ListView(
+      children: [
+        ListTile(
+          leading: Icon(Icons.image),
+          title: Text('画质'),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => QualityView()),
+            );
+          },
+        ),
+
               case 1:
                 return ListTile(
                   leading: Icon(Icons.speed),
