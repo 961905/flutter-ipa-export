@@ -27,6 +27,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,11 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        onTap: (int index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
+        onTap: _onItemTapped,
       ),
     );
   }
@@ -70,149 +72,173 @@ class _MyHomePageState extends State<MyHomePage> {
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        ListTile(
-          leading: Icon(Icons.image),
-          title: Text('画质'),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => QualityView()),
-            );
-          },
-        ),
-],
-              case 1:
-                return ListTile(
-                  leading: Icon(Icons.speed),
-                  title: Text("帧率"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => FrameRateView()),
-                    );
-                  },
-                );
-              case 2:
-                return ListTile(
-                  leading: Icon(Icons.aspect_ratio),
-                  title: Text("分辨率"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ResolutionView()),
-                    );
-                  },
-                );
-              case 3:
-                return ListTile(
-                  leading: Icon(Icons.shadows),
-                  title: Text("阴影"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ShadowView()),
-                    );
-                  },
-                );
-              case 4:
-                return ListTile(
-                  leading: Icon(Icons.wb_sunny),
-                  title: Text("亮度"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => BrightnessView()),
-                    );
-                  },
-                );
-              case 5:
-                return ListTile(
-                  leading: Icon(Icons.stethoscope),
-                  title: Text("抗锯齿"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AntiAliasingView()),
-                    );
-                  },
-                );
-              case 6:
-                return ListTile(
-                  leading: Icon(Icons.cube),
-                  title: Text("场景抗锯齿"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SceneAntiAliasingView()),
-                    );
-                  },
-                );
-              case 7:
-                return ListTile(
-                  leading: Icon(Icons.lock),
-                  title: Text("配置锁定"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ConfigLockView()),
-                    );
-                  },
-                );
-              case 8:
-                return ListTile(
-                  leading: Icon(Icons.photo),
-                  title: Text("超广角"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => UltraWideView()),
-                    );
-                  },
-                );
-              case 9:
-                return ListTile(
-                  leading: Icon(Icons.info),
-                  title: Text("伪装型号"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => DisguisedModelView()),
-                    );
-                  },
-                );
-              case 10:
-                return ListTile(
-                  leading: Icon(Icons.volume_up),
-                  title: Text("登录界面声音"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginSoundView()),
-                    );
-                  },
-                );
-              case 11:
-                return ListTile(
-                  leading: Icon(Icons.dot_circle),
-                  title: Text("游戏补帧"),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => GameFrameRateView()),
-                    );
-                  },
-                );
-              default:
-                return SizedBox();
-            }
-          }),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('哒哒工具箱'),
+      ),
+      body: ListView(
+        children: <Widget>[
+          Section(header: Text("和平精英")) {
+            ...List.generate(20, (index) {
+              switch (index) {
+                case 0:
+                  return ListTile(
+                    leading: Icon(Icons.paintbrush),
+                    title: Text("画质"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => QualityView()),
+                      );
+                    },
+                  );
+                case 1:
+                  return ListTile(
+                    leading: Icon(Icons.bolt),
+                    title: Text("帧率"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FrameRateView()),
+                      );
+                    },
+                  );
+                case 2:
+                  return ListTile(
+                    leading: Icon(Icons.rectangle_portrait),
+                    title: Text("分辨率"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ResolutionView()),
+                      );
+                    },
+                  );
+                case 3:
+                  return ListTile(
+                    leading: Icon(Icons.shadow),
+                    title: Text("阴影"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ShadowView()),
+                      );
+                    },
+                  );
+                case 4:
+                  return ListTile(
+                    leading: Icon(Icons.sun_min),
+                    title: Text("亮度"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => BrightnessView()),
+                      );
+                    },
+                  );
+                case 5:
+                  return ListTile(
+                    leading: Icon(Icons.stethoscope),
+                    title: Text("抗锯齿"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AntiAliasingView()),
+                      );
+                    },
+                  );
+                case 6:
+                  return ListTile(
+                    leading: Icon(Icons.cube_box_fill),
+                    title: Text("场景抗锯齿"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SceneAntiAliasingView()),
+                      );
+                    },
+                  );
+                case 7:
+                  return ListTile(
+                    leading: Icon(Icons.lock),
+                    title: Text("配置锁定"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ConfigLockView()),
+                      );
+                    },
+                  );
+                case 8:
+                  return ListTile(
+                    leading: Icon(Icons.photo_on_rectangle_angled),
+                    title: Text("超广角"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => UltraWideView()),
+                      );
+                    },
+                  );
+                case 9:
+                  return ListTile(
+                    leading: Icon(Icons.info_circle),
+                    title: Text("伪装型号"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => DisguisedModelView()),
+                      );
+                    },
+                  );
+                case 10:
+                  return ListTile(
+                    leading: Icon(Icons.speaker_wave_3),
+                    title: Text("登录界面声音"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginSoundView()),
+                      );
+                    },
+                  );
+                case 11:
+                  return ListTile(
+                    leading: Icon(Icons.dot_circle),
+                    title: Text("游戏补帧(开启录屏补帧)"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => GameFrameRateView()),
+                      );
+                    },
+                  );
+                case 12:
+                  return ListTile(
+                    leading: Icon(Icons.trash),
+                    title: Text("内存优化(删除资源包)"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MemoryOptimizationView()),
+                      );
+                    },
+                  );
+                default:
+                  return ListTile(
+                    leading: Icon(Icons.info),
+                    title: Text("其他设置"),
+                  );
+              }
+            }),
+          ],
         ],
       ),
     );
   }
 }
+
+// 以下是您提供的其他视图的实现，每个视图都返回一个中心文本
 
 class LibraryView extends StatelessWidget {
   @override
@@ -226,110 +252,17 @@ class LibraryView extends StatelessWidget {
 class SettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.all(20),
-            child: Row(
-              children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: NetworkImage(
-                      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'),
-                ),
-                SizedBox(width: 20),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "用户名",
-                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        "过期时间: 2024-12-12 12:12:12",
-                        style: TextStyle(fontSize: 18, color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          ListTile(
-            leading: Icon(Icons.shopping_cart),
-            title: Text("充值"),
-            onTap: () {
-              print("第一个列表项被点击");
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text("企业微信"),
-            onTap: () {
-              print("第二个列表项被点击");
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.volume_up),
-            title: Text("免责声明"),
-            onTap: () {
-              print("第三个列表项被点击");
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.videogame_asset),
-            title: Text("切换游戏"),
-            onTap: () {
-              print("第四个列表项被点击");
-            },
-          ),
-        ],
-      ),
+    return Center(
+      child: Text("设置视图"),
     );
   }
 }
 
-class QualityView extends StatefulWidget {
-  @override
-  _QualityViewState createState() => _QualityViewState();
-}
-
-class _QualityViewState extends State<QualityView> {
-  List<Map<String, dynamic>> qualityOptions = [
-    {"name": "关闭", "value": 0},
-    {"name": "流畅", "value": 0},
-    {"name": "均衡", "value": 1},
-    {"name": "高清", "value": 2},
-    {"name": "HDR", "value": 2},
-    {"name": "超高", "value": 3},
-    {"name": "极清", "value": 4},
-  ];
-  String selectedQuality = "关闭";
-
+class QualityView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("画质视图"),
-      ),
-      body: ListView.builder(
-        itemCount: qualityOptions.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(qualityOptions[index]["name"]),
-            trailing: selectedQuality == qualityOptions[index]["name"]
-                ? Icon(Icons.check)
-                : null,
-            onTap: () {
-              setState(() {
-                selectedQuality = qualityOptions[index]["name"];
-              });
-            },
-          );
-        },
-      ),
+    return Center(
+      child: Text("画质视图"),
     );
   }
 }
@@ -440,8 +373,4 @@ class MemoryOptimizationView extends StatelessWidget {
       child: Text("内存优化视图"),
     );
   }
-}
-
-void main() {
-  runApp(MyApp());
 }
