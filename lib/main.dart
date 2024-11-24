@@ -75,7 +75,7 @@ class HomeView extends StatelessWidget {
         children: <Widget>[
           Section(
             header: Text(""),
-            children: List.generate(20, (index) {
+            children: List.generate(12, (index) {
               switch (index) {
                 case 0:
                   return ListTile(
