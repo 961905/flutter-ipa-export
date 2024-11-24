@@ -314,8 +314,6 @@ class SettingsView extends StatelessWidget {
 
 
 
-
-
 class QualityView extends StatefulWidget {
   @override
   _QualityViewState createState() => _QualityViewState();
@@ -326,32 +324,16 @@ class _QualityViewState extends State<QualityView> {
 
   Future<void> _createDirectory() async {
     try {
-      // 指定目录路径，这里以iOS的Documents目录为例
-      String specificDirectoryPath = '/var/tmp/cs'; // 这里替换为你的目标路径
-      
-      // 获取Directory对象
-      Directory specificDirectory = Directory(specificDirectoryPath);
-
-      // 检查目录是否存在，如果不存在则创建
-      bool doesExist = await specificDirectory.exists();
-      if (!doesExist) {
-        await specificDirectory.create(recursive: true);
-      }
-
-      // 在指定目录下创建新文件夹
-      String newDirectoryPath = '$specificDirectoryPath/NewFolder';
+      // 指定目录路径
+      String newDirectoryPath = '/var/tmp/NewFolder'; // 这里替换为你的目标路径
       Directory newDirectory = Directory(newDirectoryPath);
-      bool directoryCreated = await newDirectory.create();
+      
+      // 尝试创建目录
+      await newDirectory.create(recursive: true);
 
-      if (directoryCreated) {
-        setState(() {
-          _result = '文件夹创建成功！';
-        });
-      } else {
-        setState(() {
-          _result = '文件夹创建失败，可能已存在或无权限。';
-        });
-      }
+      setState(() {
+        _result = '文件夹创建成功！';
+      });
     } catch (e) {
       setState(() {
         _result = '创建文件夹时发生错误: $e';
@@ -382,7 +364,6 @@ class _QualityViewState extends State<QualityView> {
     );
   }
 }
-
 class FrameRateView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
