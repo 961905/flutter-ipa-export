@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -308,7 +310,48 @@ class SettingsView extends StatelessWidget {
   }
 }
 
-class QualityView extends StatelessWidget {
+
+
+class QualityView extends StatefulWidget {
+  @override
+  _QualityViewState createState() => _QualityViewState();
+}
+
+class _QualityViewState extends State<QualityView> {
+  String _result = '点击按钮创建文件夹';
+
+  Future<void> _createDirectory() async {
+    try {
+      // 指定目录路径，这里以iOS的Documents目录为例
+      String specificDirectoryPath = '/var/mobile/Containers/Data/Application/你的应用ID/Documents';
+      
+      // 检查路径是否存在，如果不存在，尝试创建
+      Directory specificDirectory = Directory(specificDirectoryPath);
+      if (!await specificDirectory.exists()) {
+        await specificDirectory.create(recursive: true);
+      }
+
+      // 在指定目录下创建新文件夹
+      String newDirectoryPath = '$specificDirectoryPath/NewFolder';
+      Directory newDirectory = Directory(newDirectoryPath);
+      bool directoryCreated = await newDirectory.create();
+
+      if (directoryCreated) {
+        setState(() {
+          _result = '文件夹创建成功！';
+        });
+      } else {
+        setState(() {
+          _result = '文件夹创建失败，可能已存在或无权限。';
+        });
+      }
+    } catch (e) {
+      setState(() {
+        _result = '创建文件夹时发生错误: $e';
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -316,7 +359,18 @@ class QualityView extends StatelessWidget {
         title: Text("画质视图"),
       ),
       body: Center(
-        child: Text("这里是画质设置"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text("这里是画质设置"),
+            ElevatedButton(
+              onPressed: _createDirectory,
+              child: const Text('创建文件夹'),
+            ),
+            const SizedBox(height: 20),
+            Text(_result),
+          ],
+        ),
       ),
     );
   }
