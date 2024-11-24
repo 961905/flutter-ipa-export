@@ -71,12 +71,10 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            appBar: AppBar(
-        title: Text(''),
-      ),
       body: ListView(
         children: <Widget>[
           Section(
+            header: Text(""),
             children: List.generate(20, (index) {
               switch (index) {
                 case 0:
