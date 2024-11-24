@@ -14,19 +14,32 @@ class MainApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter iOS .ipa Export'),
         ),
-        body: const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(),
-            Text('Hello AmirAbbas, I\'m running on iOS!'),
-            Text(
-              'Telegram:   @amir_a14\nGithub:       @amir14a',
-              style: TextStyle(
-                fontSize: 13,
-                color: Colors.grey,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(),
+              const Text('Hello AmirAbbas, I\'m running on iOS!'),
+              const Text(
+                'Telegram:   @amir_a14\nGithub:       @amir14a',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.grey,
+                ),
               ),
-            ),
-          ],
+              ElevatedButton(
+                onPressed: () {
+                  // 按钮点击事件
+                  print('Button clicked');
+                },
+                child: const Text('Click me'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  onPrimary: Colors.white,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
