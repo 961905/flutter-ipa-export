@@ -315,13 +315,14 @@ class SettingsView extends StatelessWidget {
 
 
 
+
 class QualityView extends StatefulWidget {
   @override
   _QualityViewState createState() => _QualityViewState();
 }
 
 class _QualityViewState extends State<QualityView> {
-  String _result = '点击按钮创建文件夹';
+  String _result = '创建文件夹';
 
   Future<void> _createDirectory() async {
     try {
@@ -334,7 +335,7 @@ class _QualityViewState extends State<QualityView> {
       // 检查目录是否存在，如果不存在则创建
       bool doesExist = await specificDirectory.exists();
       if (!doesExist) {
-        doesExist = await specificDirectory.create(recursive: true);
+        await specificDirectory.create(recursive: true);
       }
 
       // 在指定目录下创建新文件夹
