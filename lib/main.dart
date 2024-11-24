@@ -6,6 +6,10 @@ enum Tab {
   settings,
 }
 
+void main() {
+  runApp(MyApp());
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -78,8 +82,9 @@ class HomeView extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          Section(header: Text("和平精英")) {
-            ...List.generate(20, (index) {
+          Section(
+            header: Text("和平精英"),
+            children: List.generate(20, (index) {
               switch (index) {
                 case 0:
                   return ListTile(
@@ -127,7 +132,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 4:
                   return ListTile(
-                    leading: Icon(Icons.sun_min),
+                    leading: Icon(Icons.wb_sunny),
                     title: Text("亮度"),
                     onTap: () {
                       Navigator.push(
@@ -149,7 +154,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 6:
                   return ListTile(
-                    leading: Icon(Icons.cube_box_fill),
+                    leading: Icon(Icons.cube),
                     title: Text("场景抗锯齿"),
                     onTap: () {
                       Navigator.push(
@@ -171,7 +176,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 8:
                   return ListTile(
-                    leading: Icon(Icons.photo_on_rectangle_angled),
+                    leading: Icon(Icons.photo),
                     title: Text("超广角"),
                     onTap: () {
                       Navigator.push(
@@ -182,7 +187,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 9:
                   return ListTile(
-                    leading: Icon(Icons.info_circle),
+                    leading: Icon(Icons.info),
                     title: Text("伪装型号"),
                     onTap: () {
                       Navigator.push(
@@ -193,7 +198,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 10:
                   return ListTile(
-                    leading: Icon(Icons.speaker_wave_3),
+                    leading: Icon(Icons.volume_up),
                     title: Text("登录界面声音"),
                     onTap: () {
                       Navigator.push(
@@ -204,7 +209,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 11:
                   return ListTile(
-                    leading: Icon(Icons.dot_circle),
+                    leading: Icon(Icons.refresh),
                     title: Text("游戏补帧(开启录屏补帧)"),
                     onTap: () {
                       Navigator.push(
@@ -215,7 +220,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 12:
                   return ListTile(
-                    leading: Icon(Icons.trash),
+                    leading: Icon(Icons.delete),
                     title: Text("内存优化(删除资源包)"),
                     onTap: () {
                       Navigator.push(
@@ -231,14 +236,12 @@ class HomeView extends StatelessWidget {
                   );
               }
             }),
-          ],
+          ),
         ],
       ),
     );
   }
 }
-
-// 以下是您提供的其他视图的实现，每个视图都返回一个中心文本
 
 class LibraryView extends StatelessWidget {
   @override
@@ -252,8 +255,67 @@ class LibraryView extends StatelessWidget {
 class SettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("设置视图"),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.all(20),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 50,
+                  backgroundImage: NetworkImage(
+                      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'),
+                ),
+                SizedBox(width: 20),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "用户名",
+                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "过期时间: 2024-12-12 12:12:12",
+                        style: TextStyle(fontSize: 18, color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.shopping_cart),
+            title: Text("充值"),
+            onTap: () {
+              print("第一个列表项被点击");
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.account_circle),
+            title: Text("企业微信"),
+            onTap: () {
+              print("第二个列表项被点击");
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.volume_up),
+            title: Text("免责声明"),
+            onTap: () {
+              print("第三个列表项被点击");
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.videogame_asset),
+            title: Text("切换游戏"),
+            onTap: () {
+              print("第四个列表项被点击");
+            },
+          ),
+        ],
+      ),
     );
   }
 }
@@ -261,8 +323,13 @@ class SettingsView extends StatelessWidget {
 class QualityView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("画质视图"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("画质视图"),
+      ),
+      body: Center(
+        child: Text("这里是画质设置"),
+      ),
     );
   }
 }
@@ -270,8 +337,13 @@ class QualityView extends StatelessWidget {
 class FrameRateView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("帧率视图"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("帧率视图"),
+      ),
+      body: Center(
+        child: Text("这里是帧率设置"),
+      ),
     );
   }
 }
@@ -279,8 +351,13 @@ class FrameRateView extends StatelessWidget {
 class ResolutionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("分辨率视图"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("分辨率视图"),
+      ),
+      body: Center(
+        child: Text("这里是分辨率设置"),
+      ),
     );
   }
 }
@@ -288,17 +365,27 @@ class ResolutionView extends StatelessWidget {
 class ShadowView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("阴影视图"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("阴影视图"),
+      ),
+      body: Center(
+        child: Text("这里是阴影设置"),
+      ),
     );
   }
 }
 
 class BrightnessView extends StatelessWidget {
-  @override
+  @@Override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("亮度视图"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("亮度视图"),
+      ),
+      body: Center(
+        child: Text("这里是亮度设置"),
+      ),
     );
   }
 }
@@ -306,8 +393,13 @@ class BrightnessView extends StatelessWidget {
 class AntiAliasingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("抗锯齿视图"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("抗锯齿视图"),
+      ),
+      body: Center(
+        child: Text("这里是抗锯齿设置"),
+      ),
     );
   }
 }
@@ -315,8 +407,13 @@ class AntiAliasingView extends StatelessWidget {
 class SceneAntiAliasingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("场景抗锯齿视图"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("场景抗锯齿视图"),
+      ),
+      body: Center(
+        child: Text("这里是场景抗锯齿设置"),
+      ),
     );
   }
 }
@@ -324,8 +421,13 @@ class SceneAntiAliasingView extends StatelessWidget {
 class ConfigLockView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("配置锁定视图"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("配置锁定视图"),
+      ),
+      body: Center(
+        child: Text("这里是配置锁定设置"),
+      ),
     );
   }
 }
@@ -333,8 +435,13 @@ class ConfigLockView extends StatelessWidget {
 class UltraWideView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("超广角视图"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("超广角视图"),
+      ),
+      body: Center(
+        child: Text("这里是超广角设置"),
+      ),
     );
   }
 }
@@ -342,8 +449,13 @@ class UltraWideView extends StatelessWidget {
 class DisguisedModelView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("伪装型号视图"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("伪装型号视图"),
+      ),
+      body: Center(
+        child: Text("这里是伪装型号设置"),
+      ),
     );
   }
 }
@@ -351,8 +463,13 @@ class DisguisedModelView extends StatelessWidget {
 class LoginSoundView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("登录界面声音视图"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("登录界面声音视图"),
+      ),
+      body: Center(
+        child: Text("这里是登录界面声音设置"),
+      ),
     );
   }
 }
@@ -360,8 +477,13 @@ class LoginSoundView extends StatelessWidget {
 class GameFrameRateView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("游戏补帧视图"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("游戏补帧视图"),
+      ),
+      body: Center(
+        child: Text("这里是游戏补帧设置"),
+      ),
     );
   }
 }
@@ -369,8 +491,31 @@ class GameFrameRateView extends StatelessWidget {
 class MemoryOptimizationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("内存优化视图"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("内存优化视图"),
+      ),
+      body: Center(
+        child: Text("这里是内存优化设置"),
+      ),
+    );
+  }
+}
+
+// Helper widget to create a section with a header and children
+class Section extends StatelessWidget {
+  final Widget header;
+  final List<Widget> children;
+
+  Section({required this.header, required this.children});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        header,
+        ...children,
+      ],
     );
   }
 }
