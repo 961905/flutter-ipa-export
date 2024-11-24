@@ -377,7 +377,7 @@ class ShadowView extends StatelessWidget {
 }
 
 class BrightnessView extends StatelessWidget {
-  @@Override
+  @Override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
