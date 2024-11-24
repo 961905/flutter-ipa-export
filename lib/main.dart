@@ -34,8 +34,8 @@ class MainApp extends StatelessWidget {
                 },
                 child: const Text('Click me'),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
-                  onPrimary: Colors.white,
+                  backgroundColor: Colors.blue,
+                  primary: Colors.white,
                 ),
               ),
             ],
