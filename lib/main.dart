@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 
-enum Tab {
-  home,
-  library,
-  settings,
-}
-
 void main() {
   runApp(MyApp());
 }
@@ -377,7 +371,7 @@ class ShadowView extends StatelessWidget {
 }
 
 class BrightnessView extends StatelessWidget {
-  @Override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
