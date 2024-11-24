@@ -313,6 +313,8 @@ class SettingsView extends StatelessWidget {
 
 
 
+
+
 class QualityView extends StatefulWidget {
   @override
   _QualityViewState createState() => _QualityViewState();
@@ -323,8 +325,8 @@ class _QualityViewState extends State<QualityView> {
 
   Future<void> _createDirectory() async {
     try {
-      // 指定目录路径
-      String specificDirectoryPath = '/var/tmp'; // 这里替换为你的目标路径
+      // 指定目录路径，这里以iOS的Documents目录为例
+      String specificDirectoryPath = '/var/tmp/cs'; // 这里替换为你的目标路径
       
       // 获取Directory对象
       Directory specificDirectory = Directory(specificDirectoryPath);
