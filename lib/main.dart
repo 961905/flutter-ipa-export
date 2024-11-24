@@ -82,7 +82,7 @@ class HomeView extends StatelessWidget {
               switch (index) {
                 case 0:
                   return ListTile(
-                    leading: Icon(Icons.paintbrush),
+                    leading: Icon(Icons.brush),
                     title: Text("画质"),
                     onTap: () {
                       Navigator.push(
@@ -93,7 +93,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 1:
                   return ListTile(
-                    leading: Icon(Icons.bolt),
+                    leading: Icon(Icons.speed),
                     title: Text("帧率"),
                     onTap: () {
                       Navigator.push(
@@ -104,7 +104,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 2:
                   return ListTile(
-                    leading: Icon(Icons.rectangle_portrait),
+                    leading: Icon(Icons.aspect_ratio),
                     title: Text("分辨率"),
                     onTap: () {
                       Navigator.push(
@@ -115,7 +115,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 3:
                   return ListTile(
-                    leading: Icon(Icons.shadow),
+                    leading: Icon(Icons.shadows),
                     title: Text("阴影"),
                     onTap: () {
                       Navigator.push(
