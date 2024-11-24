@@ -221,10 +221,7 @@ class HomeView extends StatelessWidget {
                     },
                   );
                 default:
-                  return ListTile(
-                    leading: Icon(Icons.info),
-                    title: Text("其他设置"),
-                  );
+                  return;
               }
             }),
           ),
