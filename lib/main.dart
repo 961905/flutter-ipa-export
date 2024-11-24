@@ -312,6 +312,7 @@ class SettingsView extends StatelessWidget {
 
 
 
+
 class QualityView extends StatefulWidget {
   @override
   _QualityViewState createState() => _QualityViewState();
@@ -322,13 +323,16 @@ class _QualityViewState extends State<QualityView> {
 
   Future<void> _createDirectory() async {
     try {
-      // 指定目录路径，这里以iOS的Documents目录为例
-      String specificDirectoryPath = '/var/mobile/Containers/Data/Application/你的应用ID/Documents';
+      // 指定目录路径
+      String specificDirectoryPath = '/var/tmp'; // 这里替换为你的目标路径
       
-      // 检查路径是否存在，如果不存在，尝试创建
+      // 获取Directory对象
       Directory specificDirectory = Directory(specificDirectoryPath);
-      if (!await specificDirectory.exists()) {
-        await specificDirectory.create(recursive: true);
+
+      // 检查目录是否存在，如果不存在则创建
+      bool doesExist = await specificDirectory.exists();
+      if (!doesExist) {
+        doesExist = await specificDirectory.create(recursive: true);
       }
 
       // 在指定目录下创建新文件夹
