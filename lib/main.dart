@@ -148,7 +148,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 6:
                   return ListTile(
-                    leading: Icon(Icons.cube),
+                    leading: Icon(Icons.aspect_ratio),
                     title: Text("场景抗锯齿"),
                     onTap: () {
                       Navigator.push(
@@ -159,7 +159,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 7:
                   return ListTile(
-                    leading: Icon(Icons.lock),
+                    leading: Icon(Icons.aspect_ratio),
                     title: Text("配置锁定"),
                     onTap: () {
                       Navigator.push(
@@ -170,7 +170,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 8:
                   return ListTile(
-                    leading: Icon(Icons.photo),
+                    leading: Icon(Icons.aspect_ratio),
                     title: Text("超广角"),
                     onTap: () {
                       Navigator.push(
@@ -192,7 +192,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 10:
                   return ListTile(
-                    leading: Icon(Icons.volume_up),
+                    leading: Icon(Icons.aspect_ratio),
                     title: Text("登录界面声音"),
                     onTap: () {
                       Navigator.push(
