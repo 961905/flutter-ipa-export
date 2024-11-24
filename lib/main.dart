@@ -221,7 +221,7 @@ class HomeView extends StatelessWidget {
                     },
                   );
                 default:
-                  return 0;
+                  return ListTile();
               }
             }),
           ),
