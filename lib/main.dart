@@ -137,7 +137,7 @@ class HomeView extends StatelessWidget {
                   );
                 case 5:
                   return ListTile(
-                    leading: Icon(Icons.stethoscope),
+                    leading: Icon(Icons.aspect_ratio),
                     title: Text("抗锯齿"),
                     onTap: () {
                       Navigator.push(
