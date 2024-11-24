@@ -10,32 +10,47 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Flutter iOS .ipa Export'),
-            bottom: TabBar(
-              tabs: [
-                Tab(
-                  icon: Icon(Icons.home),
-                ),
-                Tab(
-                  icon: Icon(Icons.book),
-                ),
-                Tab(
-                  icon: Icon(Icons.settings),
-                ),
-              ],
-            ),
-          ),
-          body: TabBarView(
-            children: [
-              HomeView(),
-              LibraryView(),
-              SettingsView(),
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter iOS .ipa Export'),
+          bottom: TabBar(
+            isScrollable: true,
+            tabs: [
+              Tab(
+                icon: Icon(Icons.home),
+                text: '主页',
+              ),
+              Tab(
+                icon: Icon(Icons.book),
+                text: '教程',
+              ),
+              Tab(
+                icon: Icon(Icons.settings),
+                text: '设置',
+              ),
             ],
           ),
+        ),
+        body: TabBarView(
+          children: [
+            HomeView(),
+            LibraryView(),
+            SettingsView(),
+          ],
         ),
       ),
     );
@@ -45,47 +60,151 @@ class MyApp extends StatelessWidget {
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 12,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('哒哒工具箱'),
-          bottom: TabBar(
-            tabs: List.generate(12, (index) => Tab(text: "Tab ${index + 1}")),
-          ),
-        ),
-        body: TabBarView(
-          children: List.generate(12, (index) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('哒哒工具箱'),
+      ),
+      body: ListView(
+        children: [
+          ...List.generate(12, (index) {
             switch (index) {
               case 0:
-                return QualityView();
+                return ListTile(
+                  leading: Icon(Icons.image),
+                  title: Text("画质"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => QualityView()),
+                    );
+                  },
+                );
               case 1:
-                return FrameRateView();
+                return ListTile(
+                  leading: Icon(Icons.speed),
+                  title: Text("帧率"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FrameRateView()),
+                    );
+                  },
+                );
               case 2:
-                return ResolutionView();
+                return ListTile(
+                  leading: Icon(Icons.aspect_ratio),
+                  title: Text("分辨率"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ResolutionView()),
+                    );
+                  },
+                );
               case 3:
-                return ShadowView();
+                return ListTile(
+                  leading: Icon(Icons.shadows),
+                  title: Text("阴影"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ShadowView()),
+                    );
+                  },
+                );
               case 4:
-                return BrightnessView();
+                return ListTile(
+                  leading: Icon(Icons.wb_sunny),
+                  title: Text("亮度"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => BrightnessView()),
+                    );
+                  },
+                );
               case 5:
-                return AntiAliasingView();
+                return ListTile(
+                  leading: Icon(Icons.stethoscope),
+                  title: Text("抗锯齿"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AntiAliasingView()),
+                    );
+                  },
+                );
               case 6:
-                return SceneAntiAliasingView();
+                return ListTile(
+                  leading: Icon(Icons.cube),
+                  title: Text("场景抗锯齿"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SceneAntiAliasingView()),
+                    );
+                  },
+                );
               case 7:
-                return ConfigLockView();
+                return ListTile(
+                  leading: Icon(Icons.lock),
+                  title: Text("配置锁定"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ConfigLockView()),
+                    );
+                  },
+                );
               case 8:
-                return UltraWideView();
+                return ListTile(
+                  leading: Icon(Icons.photo),
+                  title: Text("超广角"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => UltraWideView()),
+                    );
+                  },
+                );
               case 9:
-                return DisguisedModelView();
+                return ListTile(
+                  leading: Icon(Icons.info),
+                  title: Text("伪装型号"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DisguisedModelView()),
+                    );
+                  },
+                );
               case 10:
-                return LoginSoundView();
+                return ListTile(
+                  leading: Icon(Icons.volume_up),
+                  title: Text("登录界面声音"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginSoundView()),
+                    );
+                  },
+                );
               case 11:
-                return GameFrameRateView();
+                return ListTile(
+                  leading: Icon(Icons.dot_circle),
+                  title: Text("游戏补帧"),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => GameFrameRateView()),
+                    );
+                  },
+                );
               default:
-                return MemoryOptimizationView();
+                return SizedBox();
             }
           }),
-        ),
+        ],
       ),
     );
   }
